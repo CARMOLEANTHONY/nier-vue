@@ -13,11 +13,13 @@
 <script>
 // let echarts = require('echarts/lib/echarts')
 import echarts from "echarts";
+
 // 引入柱状图组件
-require("echarts/lib/chart/bar");
+import("echarts/lib/chart/bar");
 // 引入提示框和title组件
-require("echarts/lib/component/tooltip");
-require("echarts/lib/component/title");
+import("echarts/lib/component/tooltip");
+import("echarts/lib/component/title");
+
 export default {
   name: "product-details",
   data() {
@@ -111,19 +113,19 @@ export default {
         ["2013/6/6", 2264.43, 2242.11, 2240.07, 2266.69],
         ["2013/6/7", 2242.26, 2210.9, 2205.07, 2250.63],
         ["2013/6/13", 2190.1, 2148.35, 2126.22, 2190.1]
-      ]
+      ],
+      myChart: {}
     };
   },
   mounted() {
+    this.myChart = echarts.init(document.getElementById("myChart"));
+
     this.drawLine();
 
     this.$store.commit("globalDom", this.$refs.myChart);
-
-    console.log(this.$store.state.globalDom)
   },
   methods: {
     drawLine() {
-      var myChart = echarts.init(document.getElementById("myChart"));
       var option = {
         tooltip: {
           trigger: "axis",
@@ -160,7 +162,7 @@ export default {
         ]
       };
       // 使用刚指定的配置项和数据显示图表。
-      myChart.setOption(option);
+      this.myChart.setOption(option);
     },
     changeLine(e) {
       var clickDom = e.target;
@@ -169,9 +171,8 @@ export default {
         .siblings("li")
         .removeClass("active");
       $(clickDom).addClass("active");
-      var myChart = echarts.init(document.getElementById("myChart"));
-      if (myChart) {
-        myChart.dispose();
+      if (this.myChart) {
+        this.myChart.dispose();
       }
       if (index > 0) {
         this.getK();
@@ -200,7 +201,6 @@ export default {
       };
     },
     getK() {
-      var myChart = echarts.init(document.getElementById("myChart"));
       this.data0 = this.splitData(this.data0);
       var option = {
         title: {
@@ -290,7 +290,7 @@ export default {
           }
         ]
       };
-      myChart.setOption(option);
+      this.myChart.setOption(option);
     }
   }
 };

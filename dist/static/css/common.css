@@ -1,0 +1,42 @@
+@charset "utf-8";
+/* CSS Document */
+/*全局-------------------*/
+*{padding: 0; margin: 0;}
+body,div,span,ul,li,ol,dl,dt,dd,em,i,h1,h2,h3,h4,h5,h6,p,input,a,img,button{ margin:0; padding:0; list-style:none; border:0;}
+em,i{ font-style:normal;}
+img{ width:100%; display:block;}
+input[type="button"]{-webkit-appearance: none;}
+input {outline: none}
+ul,li{ list-style: none; }
+a{ color:#000; text-decoration:none;}
+html{font-size:20px;}
+body{font-family:"思源黑体", Tahoma; color:#000; max-width:750px; margin:0 auto;background: #f5f5f5}
+.clearfix::before,
+.clearfix::after{
+    content: "";
+    display: block;
+    height: 0;
+    line-height: 0px;
+    clear: both;
+    visibility: hidden;
+}
+.fl {
+    float: left;
+}
+.fr {
+    float: right;
+}
+.pubColor {
+  color: #ff9600;
+}
+.gray73 {
+  color: #737373;
+}
+.bor-left-radius {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+.bor-right-radius {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
